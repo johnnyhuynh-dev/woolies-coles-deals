@@ -9,7 +9,7 @@ async function getProductsForOneCategory(page, categoryURL, categoryName) {
 
   // Get the total number of pages we need to get data from
   const numberOfPages = await getNumberOfPages(page);
-  if (!numberOfPages) return;
+  if (!numberOfPages) return [];
 
   // Get products for all pages
   const data = await getProductsForMultiplePages(
