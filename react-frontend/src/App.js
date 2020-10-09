@@ -1,10 +1,11 @@
 import React from "react";
-import "./App.css";
+import ProductsNavigation from "./components/ProductsNavigation";
 
 function App() {
   return (
-    <div className="App">
-      <div>This is the first line of code written in React</div>
+    <div className="container">
+      <div style={{ textAlign: "center" }}>Woolies Coles Deals project</div>
+      <ProductsNavigation />
     </div>
   );
 }

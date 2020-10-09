@@ -1,0 +1,23 @@
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button {
+  border: none;
+  border-radius: 10px;
+  margin: 5px;
+  background-color: var(--dark-blue);
+  color: var(--side-white);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.9;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.7);
+  }
+}

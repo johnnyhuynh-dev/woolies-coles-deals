@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  --dark-pink: #ff74ba;
+  --light-pink: #ffceff;
+  --dark-blue: #6266ea;
+  --light-blue: #90ceff;
+  --light-purple: #c7b2fb;
+  --light-orange: #ffbb59;
+  --dark-orange: #ff6b00;
+  --text-black: #040404;
+  --text-grey: #bdbfc3;
+  --background-white: #ffffff;
+  --side-white: #f8fafb;
+}
+
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
