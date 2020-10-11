@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./SingleCategory.scss";
+import { GlobalContext } from "./ContextWrapper";
 
 export default function SingleCategory({
   category,
   categorySVG,
-  selectCategory,
+  setCategory,
+  selectedCategory,
 }) {
   return (
-    <li onClick={selectCategory} data-category={category} className="category">
+    <li
+      onClick={setCategory}
+      data-category={category}
+      className={`category ${selectedCategory === category ? "selected" : ""}`}
+    >
       <div>
         <img src={categorySVG} alt={`${category} icon`} height="25" />
         <span>{category}</span>

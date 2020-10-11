@@ -47,7 +47,8 @@ export default function ProductsNavigation() {
             key={category}
             category={category}
             categorySVG={categorySVG}
-            selectCategory={setCategory}
+            setCategory={setCategory}
+            selectedCategory={selectedCategory}
           />
         ))}
       </nav>

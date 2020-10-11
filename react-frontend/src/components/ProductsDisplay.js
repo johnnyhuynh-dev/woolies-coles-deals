@@ -2,15 +2,13 @@ import React, { useEffect } from "react";
 import useFetchProducts from "../hooks/useFetchProducts";
 
 export default function ProductsDisplay() {
-  const products = useFetchProducts();
-
-  useEffect(() => {
-    console.log(products);
-  });
+  const { loading, error, products } = useFetchProducts();
 
   return (
     <div>
-      <pre>{JSON.stringify(null, 2, products)}</pre>
+      <pre>Data: {JSON.stringify(products, null, 4)}</pre>
+      <pre>Loading: {JSON.stringify(loading, null, 4)}</pre>
+      <pre>Error:{JSON.stringify(error, null, 4)}</pre>
     </div>
   );
 }

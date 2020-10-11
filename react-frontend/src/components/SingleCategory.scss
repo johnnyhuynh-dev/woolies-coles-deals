@@ -11,6 +11,8 @@
   align-items: center;
   color: var(--side-white);
   font-weight: 700;
+  transform: translateX(0);
+  transition: transform 0.3s;
 
   div {
     display: flex;
@@ -26,9 +28,17 @@
     transition: transform 0.3s;
   }
 
-  &:hover {
+  &:hover,
+  &.selected {
     i {
       transform: translateX(5px);
     }
+  }
+
+  // on selected, the category changes the color and moves a bit to the right
+
+  &.selected {
+    background-color: var(--dark-pink);
+    transform: translateX(10px);
   }
 }
