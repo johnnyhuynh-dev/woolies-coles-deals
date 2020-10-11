@@ -3,6 +3,7 @@ const functions = require("firebase-functions");
 const scrapingForWoolies = require("./woolies/scrapingForWoolies");
 const writingToDatabase = require("./functionUtils");
 const admin = require("firebase-admin");
+const sampleData = require("./woolies/wooliesProducts.json");
 admin.initializeApp();
 
 const runtimeOptions = {
@@ -61,4 +62,13 @@ exports.getBakeryPetLunchboxFromWoolies = functions
     };
     const result = await writingToDatabase(scrapingForWoolies, categoryList);
     res.send(result);
+  });
+
+exports.writeSampleDataToFirestoreEmulator = functions
+  .runWith(runtimeOptions)
+  .https.onRequest((req, res) => {
+    sampleData.table.forEach((product) => {
+      admin.firestore().collection("sampleData").add(product);
+    });
+    res.send(sampleData);
   });

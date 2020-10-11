@@ -9,12 +9,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--side-white);
+  font-weight: 700;
 
   div {
     display: flex;
     align-items: center;
 
-    a {
+    span {
       margin-left: 10px;
     }
   }

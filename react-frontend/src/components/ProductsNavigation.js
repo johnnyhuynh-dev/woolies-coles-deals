@@ -31,12 +31,12 @@ const categories = {
 };
 
 export default function ProductsNavigation() {
-  const [category, setCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  function selectCategory(e) {
+  function setCategory(e) {
     const category = e.currentTarget.dataset.category;
     console.log(category);
-    setCategory(category);
+    setSelectedCategory(category);
   }
 
   return (
@@ -47,12 +47,12 @@ export default function ProductsNavigation() {
             key={category}
             category={category}
             categorySVG={categorySVG}
-            selectCategory={selectCategory}
+            selectCategory={setCategory}
           />
         ))}
       </nav>
 
-      <div>{category}</div>
+      <div>{selectedCategory}</div>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import * as firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/functions";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD0Pr9WpOut5N31uy18kbhH6kx2KFl4oC0",
@@ -16,6 +17,17 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Initialize Project Firestore
-const projectFirestore = firebase.firestore();
+const database = firebase.firestore();
 
-export { projectFirestore };
+// temporarily set the Firestore to localhost emulators for testing
+if (window.location.hostname === "localhost") {
+  database.settings({
+    host: "localhost:8080",
+    ssl: false,
+  });
+}
+
+// temporarily set cloud functions to localhost emulators for testing
+firebase.functions().useFunctionsEmulator("http://localhost:5001");
+
+export { database };
