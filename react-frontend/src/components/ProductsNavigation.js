@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "./ProductsNavigation.scss";
 import SingleCategory from "./SingleCategory";
+import { GlobalContext } from "./ContextWrapper";
 
 // import all SVG icons
+import allSVG from "../assets/all.svg";
 import meatSVG from "../assets/meat.svg";
 import bakerySVG from "../assets/bakery.svg";
 import dairySVG from "../assets/dairy.svg";
@@ -17,6 +19,7 @@ import householdSVG from "../assets/household.svg";
 
 // create an object of categories and their corresponding SVG
 const categories = {
+  "All Specials": allSVG,
   "Meat, Seafood & Deli": meatSVG,
   Bakery: bakerySVG,
   "Dairy, Eggs & Fridge": dairySVG,
@@ -31,7 +34,8 @@ const categories = {
 };
 
 export default function ProductsNavigation() {
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const state = useContext(GlobalContext);
+  const [selectedCategory, setSelectedCategory] = state.categorySelectionHook;
 
   function setCategory(e) {
     const category = e.currentTarget.dataset.category;
@@ -48,7 +52,6 @@ export default function ProductsNavigation() {
             category={category}
             categorySVG={categorySVG}
             setCategory={setCategory}
-            selectedCategory={selectedCategory}
           />
         ))}
       </nav>

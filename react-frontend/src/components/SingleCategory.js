@@ -2,12 +2,9 @@ import React, { useContext } from "react";
 import "./SingleCategory.scss";
 import { GlobalContext } from "./ContextWrapper";
 
-export default function SingleCategory({
-  category,
-  categorySVG,
-  setCategory,
-  selectedCategory,
-}) {
+export default function SingleCategory({ category, categorySVG, setCategory }) {
+  const state = useContext(GlobalContext);
+  const [selectedCategory] = state.categorySelectionHook;
   return (
     <li
       onClick={setCategory}

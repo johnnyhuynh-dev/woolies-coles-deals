@@ -1,22 +1,31 @@
 import { useEffect, useState } from "react";
 import { database } from "../firebase/firebaseConfig";
 
-export default function useFetchProducts() {
+export default function useFetchProducts(category, limit) {
   const [products, setProducts] = useState({
     loading: "",
     error: "",
     products: [],
   });
 
-  async function fetchProducts() {
+  async function fetchProducts(category, limit) {
     setProducts({ ...products, loading: true, error: false });
     let fetchedProducts = [];
-    await database
-      .collection("sampleData")
-      .limit(10)
+    let categoryRef;
+    const productsRef = database.collection("sampleData");
+
+    // query products based on category
+    if (category === "All Specials") {
+      categoryRef = productsRef;
+    } else {
+      categoryRef = productsRef.where("category", "==", category);
+    }
+
+    const categoryRefWithLimit = categoryRef.limit(limit);
+
+    await categoryRefWithLimit
       .get()
       .then((querySnapshot) => {
-        console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
           fetchedProducts.push({ id: doc.id, ...doc.data() });
         });
@@ -33,8 +42,8 @@ export default function useFetchProducts() {
   }
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    fetchProducts(category, limit);
+  }, [category, limit]);
 
   return products;
 }

@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import useFetchProducts from "../hooks/useFetchProducts";
+import { GlobalContext } from "./ContextWrapper";
 
 export default function ProductsDisplay() {
-  const { loading, error, products } = useFetchProducts();
+  const state = useContext(GlobalContext);
+  const [selectedCategory] = state.categorySelectionHook;
+  const { loading, error, products } = useFetchProducts(selectedCategory, 5);
 
   return (
     <div>
